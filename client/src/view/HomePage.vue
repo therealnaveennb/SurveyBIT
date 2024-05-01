@@ -1,6 +1,7 @@
 <template>
         <div class="main"> 
     <NavBar />
+    
 
         <div class="logo">
             <center>
@@ -15,8 +16,7 @@
 import NavBar from '@/components/NavBar.vue';
 export default {
   components: {
-    NavBar
-  }
+    NavBar  }
 };
 </script>
 <style scoped>
