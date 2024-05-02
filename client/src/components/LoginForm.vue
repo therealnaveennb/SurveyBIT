@@ -1,62 +1,61 @@
 <template>
   <div class="login-container">
     <div class="login-form">
-      <center>
+      <div class="logo">
         <h1>BIT Survey</h1>
         <img
           :src="require('@/assets/bitLogo.png')"
           alt="Logo"
-          style="height: 10rem; align-items: center"
+          style="height: 8rem; align-items: center"
         />
-      </center>
+      </div>
+      <div class="login-form">
+        <form @submit.prevent="login">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" v-model="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" v-model="password" required />
+           
+          </div>
+         
+            <button type="submit">Login</button>
+           
 
-      <form @submit.prevent="login">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" v-model="username" required />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" required />
-        </div>
-        <router-link to="/home">
-          <button type="submit">Login</button>
-
-          
-        </router-link>
-       
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-  <GoogleLogin :callback="callback"/>
+  <GoogleLogin :callback="callback" />
 </template>
-
 <script>
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      // Predefined username and password
+      const predefinedUsername = "example";
+      const predefinedPassword = "password";
 
-  export default {
-
-    data() {
-      return {
-        username: '',
-        password: '',
-
-      };
+      // Check if entered username and password match predefined values
+      if (this.username === predefinedUsername && this.password === predefinedPassword) {
+        // Login successful, navigate to home page
+        this.$router.push("/home");
+      } else {
+        // Login failed, show error message or handle accordingly
+        alert("Invalid username or password!");
+      }
     },
-    methods: {
-      login() {
-        // Add your login logic here
-        console.log('Username:', this.username);
-        console.log('Password:', this.password);
-      },
-        callback(response) {
-            console.log(response);
-        }
-   
-    }
-
-  };
+  },
+};
 </script>
-
 <style scoped>
 body {
   margin: 0;
@@ -70,11 +69,16 @@ body {
   background-color: #e8e4ec;
 }
 
+.logo{
+  display: flex ;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
 .login-form {
-  max-width: 400px;
-  padding: 4rem 7rem;
+  padding:1rem 4rem 1rem 4rem;
+  
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
 

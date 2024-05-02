@@ -24,7 +24,7 @@ body{
     background-color: #e8e4ec;
 }
 .logo{
-margin-top: 100rem;
+
 }
 
 </style>
