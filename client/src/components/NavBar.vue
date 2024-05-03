@@ -172,6 +172,7 @@ router-link {
 .sidebar-container {
   display: grid;
   grid-template-columns: auto ;
+ 
 }
 .sidebar-open {
   transform: translateX(0);
